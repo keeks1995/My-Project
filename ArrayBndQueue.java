@@ -1,4 +1,6 @@
 //---------------------------------------------------------------------------
+/*helloooooooooooooooooo*/
+
 // ArrayBndQueue.java          by Dale/Joyce/Weems                  Chapter 5
 //
 // Implements BoundedQueueInterface with an array to hold the queue elements.
@@ -15,30 +17,30 @@ public class ArrayBndQueue<T> implements BoundedQueueInterface<T>
   protected T[] queue;              // array that holds queue elements
   protected int numElements = 0;    // number of elements n the queue
   protected int front = 0;          // index of front of queue
-  protected int rear;               // index of rear of queue
+  protected int back;               // index of back of queue
 
   public ArrayBndQueue() 
   {
     queue = (T[]) new Object[DEFCAP];
-	 rear = DEFCAP - 1;
+	 back = DEFCAP - 1;
   }
 
   public ArrayBndQueue(int maxSize) 
   {
     queue = (T[]) new Object[maxSize];
-	 rear = maxSize - 1;
+	 back = maxSize - 1;
   }
 
   public void enqueue(T element)
   // Throws QueueOverflowException if this queue is full;
-  // otherwise, adds element to the rear of this queue.
+  // otherwise, adds element to the back of this queue.
   {  
     if (isFull())
       throw new QueueOverflowException("Enqueue attempted on a full queue.");
     else
     {
-      rear = (rear + 1) % queue.length;
-      queue[rear] = element;
+      back = (back + 1) % queue.length;
+      queue[back] = element;
       numElements = numElements + 1;
     }
   }
